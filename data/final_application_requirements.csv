@@ -1,0 +1,37 @@
+Analysis_ID,Application_Name,Property_Name,Required_Value,Required_Unit,Requirement_Level,Weight_Percentage,Hard_Constraint,Notes
+A001,Automotive_Underhood_Bracket,Tensile_Strength,70,MPa,High,30,Yes,Structural load bearing capacity under engine bay vibration.
+A001,Automotive_Underhood_Bracket,Max_Service_Temperature,120,C,High,25,Yes,Continuous ambient heat exposure in underhood environment.
+A001,Automotive_Underhood_Bracket,Chemical_Resistance,High,,High,20,Yes,"Resistance to motor oils, fuels, and glycol-based coolants."
+A001,Automotive_Underhood_Bracket,Density,1.40,g/cm3,Low,15,No,Weight reduction target for vehicle fuel efficiency.
+A001,Automotive_Underhood_Bracket,Cost_Category,Medium,,Medium,10,No,Commercial cost boundary for mass automotive production.
+A002,Transparent_Safety_Shield,Optical_Transparency,High,,High,35,Yes,Mandatory visual clarity; requires adding Optical_Transparency column to property DB.
+A002,Transparent_Safety_Shield,Impact_Strength,40.0,kJ/m2,High,30,Yes,High energy absorption against ballistic fragments and flying debris.
+A002,Transparent_Safety_Shield,Max_Service_Temperature,80,C,Medium,15,No,Thermal endurance for hot outdoor and industrial plant environments.
+A002,Transparent_Safety_Shield,Density,1.25,g/cm3,Low,10,No,Ergonomic lightweight comfort for continuous head-worn equipment.
+A002,Transparent_Safety_Shield,Chemical_Resistance,Medium,,Medium,10,No,"Tolerance to lens cleaning solutions, oils, and industrial vapors."
+A003,Consumer_Drink_Closure,Cost_Category,Low,,High,30,Yes,Strict commodity packaging unit economic ceiling for mass-scale manufacturing.
+A003,Consumer_Drink_Closure,Density,0.96,g/cm3,Low,25,Yes,Specific gravity < 1.0 g/cm3 mandatory for float separation in wash recycling.
+A003,Consumer_Drink_Closure,Injection_Molding_Suitability,High,,High,20,Yes,Rapid multi-cavity injection molding cycle capability.
+A003,Consumer_Drink_Closure,Water_Absorption,0.05,%,High,15,No,Hydrolytic barrier preventing dimensional swell and seal pressure loss.
+A003,Consumer_Drink_Closure,Chemical_Resistance,High,,Medium,10,No,"Inertness against beverage acids, carbonation, and flavorings."
+A004,High_Temperature_Aerospace_Connector,Max_Service_Temperature,200,C,High,30,Yes,Material screening threshold for high ambient continuous temperatures.
+A004,High_Temperature_Aerospace_Connector,Heat_Resistance,High,,High,25,Yes,High thermal stability and flammability resistance during thermal cycling.
+A004,High_Temperature_Aerospace_Connector,Tensile_Modulus,3500,MPa,High,20,Yes,High dimensional stiffness to preserve multi-pin electrical contact alignment.
+A004,High_Temperature_Aerospace_Connector,Tensile_Strength,80,MPa,High,15,No,Mechanical retention strength under shock and wiring harness pull loads.
+A004,High_Temperature_Aerospace_Connector,Injection_Molding_Suitability,High,,Medium,10,No,Screening for processability into complex thin-wall connector housings.
+A005,Medical_Autoclave_Tray,Max_Service_Temperature,135,C,High,30,Yes,Thermal screening threshold to survive 134°C pressurized steam cycles.
+A005,Medical_Autoclave_Tray,Chemical_Resistance,High,,High,25,Yes,Screening for resistance to enzymatic detergents and harsh disinfectants.
+A005,Medical_Autoclave_Tray,Heat_Resistance,High,,High,20,Yes,Hydrolytic and steam-aging structural resistance.
+A005,Medical_Autoclave_Tray,Water_Absorption,0.80,%,High,15,No,Low moisture uptake to minimize warp and dimensional changes during steam cycles.
+A005,Medical_Autoclave_Tray,Tensile_Strength,60,MPa,Medium,10,No,Structural rigidity to carry surgical tool payloads without bending.
+A006,Precision_Actuator_Gear,Wear_Resistance,High,,High,30,Yes,Low friction coefficient and high cyclic gear-tooth wear endurance.
+A006,Precision_Actuator_Gear,Tensile_Modulus,2500,MPa,High,25,Yes,High flexural stiffness to minimize tooth bending under torque transmission.
+A006,Precision_Actuator_Gear,Tensile_Strength,60,MPa,High,20,Yes,Tooth root shear and tensile yield resistance under peak stall loads.
+A006,Precision_Actuator_Gear,Max_Service_Temperature,90,C,Medium,15,No,Thermal headroom against frictional heat build-up inside gear enclosure.
+A006,Precision_Actuator_Gear,Density,1.45,g/cm3,Low,10,No,Rotational inertia minimization for responsive mechatronic actuation.
+A007,Air Cooler Water-Distribution Tray,Water_Absorption,0.1,%,High,20,Yes,Low water absorption to reduce moisture-related dimensional changes during continuous water exposure.
+A007,Air Cooler Water-Distribution Tray,Chemical_Resistance,High,,High,20,Yes,Resistance to water-treatment chemicals and common cleaning agents used during cooler maintenance.
+A007,Air Cooler Water-Distribution Tray,Injection_Molding_Suitability,High,,High,20,Yes,High suitability supports practical production of the tray using injection molding.
+A007,Air Cooler Water-Distribution Tray,Tensile_Strength,25,MPa,Medium,15,No,Provides sufficient structural strength for handling and normal service loading.
+A007,Air Cooler Water-Distribution Tray,Heat_Resistance,High,,High,15,No,Provides additional resistance to heat exposure during outdoor operation.
+A007,Air Cooler Water-Distribution Tray,Cost_Category,Low,,Medium,10,No,Lower material cost is desirable for a mass-produced consumer appliance component.

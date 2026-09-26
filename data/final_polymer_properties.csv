@@ -1,0 +1,21 @@
+Polymer_ID,Density_Value,Density_Unit,Tensile_Strength_Value,Tensile_Strength_Unit,Tensile_Modulus_Value,Tensile_Modulus_Unit,Impact_Strength_Value,Impact_Strength_Unit,Impact_Test_Method,Max_Service_Temperature_Value,Max_Service_Temperature_Unit,Melting_or_Softening_Temperature_Value,Melting_or_Softening_Temperature_Unit,Water_Absorption_Value,Water_Absorption_Unit,Chemical_Resistance,Wear_Resistance,UV_Resistance,Heat_Resistance,Optical_Transparency,Cost_Category,Injection_Molding_Suitability
+POL001,0.9,g/cm3,35.0,MPa,1550,MPa,4.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),100,C,163,C,0.01,%,Medium,Medium,Low,Medium,Medium,Low,High
+POL002,0.958,g/cm3,29.0,MPa,1300,MPa,11.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),80,C,131,C,0.01,%,High,Medium,Low,Low,Low,Low,High
+POL003,0.924,g/cm3,11.0,MPa,260,MPa,,kJ/m2,No Break / Not Tested at ISO standard,70,C,111,C,0.01,%,High,Low,Low,Low,Medium,Low,High
+POL004,1.04,g/cm3,45.0,MPa,2300,MPa,19.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),85,C,98,C,0.25,%,Low,Medium,Low,Medium,Low,Medium,High
+POL005,1.04,g/cm3,52.0,MPa,3200,MPa,3.0,kJ/m2,ISO 179-1eU (Charpy Unnotched 23C),75,C,104,C,0.1,%,Low,Low,Low,Low,High,Low,High
+POL006,1.14,g/cm3,80.0,MPa,3000,MPa,4.5,kJ/m2,ISO 179-1eA (Charpy Notched 23C; dry),110,C,222,C,9.5,%,High,High,Low,Medium,Low,Medium,High
+POL007,1.14,g/cm3,85.0,MPa,3100,MPa,5.5,kJ/m2,ISO 179-1eA (Charpy Notched 23C; dry),130,C,262,C,8.5,%,High,High,Low,High,Low,Medium,High
+POL008,1.2,g/cm3,65.0,MPa,2400,MPa,65.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),125,C,145,C,0.3,%,Medium,Low,Medium,High,High,High,High
+POL009,1.41,g/cm3,65.0,MPa,2800,MPa,6.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),100,C,166,C,0.65,%,High,High,Low,Medium,Low,Medium,High
+POL010,1.19,g/cm3,77.0,MPa,3300,MPa,1.5,kJ/m2,ISO 179-1eA (Charpy Notched 23C),85,C,107,C,0.3,%,Low,Low,High,Low,High,Medium,High
+POL011,1.3,g/cm3,56.0,MPa,2500,MPa,4.5,kJ/m2,ISO 179-1eA (Charpy Notched 23C),120,C,225,C,0.4,%,High,Medium,Medium,High,Low,Medium,High
+POL012,1.65,g/cm3,165.0,MPa,14500,MPa,8.5,kJ/m2,ISO 179-1eA (Charpy Notched 23C),220,C,280,C,0.02,%,High,High,High,High,Low,High,High
+POL013,1.37,g/cm3,85.0,MPa,3100,MPa,3.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),115,C,255,C,0.5,%,High,High,Medium,High,Low,Medium,High
+POL014,1.3,g/cm3,100.0,MPa,3800,MPa,7.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),250,C,343,C,0.4,%,High,High,High,High,Low,High,High
+POL015,2.16,g/cm3,28.0,MPa,550,MPa,16.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),260,C,327,C,0.01,%,High,Low,High,High,Low,High,Low
+POL016,1.24,g/cm3,70.0,MPa,2500,MPa,6.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),150,C,187,C,0.8,%,Medium,Low,Medium,High,High,High,High
+POL017,1.27,g/cm3,105.0,MPa,3200,MPa,4.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),170,C,217,C,0.7,%,Medium,Medium,High,High,High,High,High
+POL018,1.13,g/cm3,54.0,MPa,2400,MPa,45.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),105,C,120,C,0.2,%,Medium,Medium,Low,Medium,Low,Medium,High
+POL019,1.21,g/cm3,90.0,MPa,5300,MPa,7.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),130,C,145,C,0.06,%,High,Medium,Medium,High,Low,High,High
+POL020,1.78,g/cm3,55.0,MPa,2100,MPa,9.0,kJ/m2,ISO 179-1eA (Charpy Notched 23C),150,C,172,C,0.04,%,High,High,High,High,Low,High,High

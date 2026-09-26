@@ -1,0 +1,140 @@
+Source_ID,Polymer_ID,Property_Name,Property_Value,Unit,Test_Method,Source_Type,Source_Name,Manufacturer,Document_Title
+SRC001,POL001,Density,0.9,g/cm3,ISO 1183,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Moplen HP500N Technical Data Sheet
+SRC002,POL001,Tensile_Strength,35,MPa,ISO 527-1/-2,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Moplen HP500N Technical Data Sheet
+SRC003,POL001,Tensile_Modulus,1550,MPa,ISO 527-1/-2,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Moplen HP500N Technical Data Sheet
+SRC004,POL001,Impact_Strength,4,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Moplen HP500N Technical Data Sheet
+SRC005,POL001,Melting_or_Softening_Temperature,163,C,ISO 3146,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Moplen HP500N Technical Data Sheet
+SRC006,POL001,Water_Absorption,0.01,%,ISO 62,Engineering_Reference,Plastics Handbook / Campus Plastics,LyondellBasell,CAMPUS Polymer Database Profile
+SRC007,POL002,Density,0.958,g/cm3,ISO 1183,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Hostalen ACP 5831 D Technical Data Sheet
+SRC008,POL002,Tensile_Strength,29,MPa,ISO 527-1/-2,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Hostalen ACP 5831 D Technical Data Sheet
+SRC009,POL002,Tensile_Modulus,1300,MPa,ISO 527-1/-2,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Hostalen ACP 5831 D Technical Data Sheet
+SRC010,POL002,Impact_Strength,11,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Hostalen ACP 5831 D Technical Data Sheet
+SRC011,POL002,Melting_or_Softening_Temperature,131,C,ISO 3146,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Hostalen ACP 5831 D Technical Data Sheet
+SRC012,POL002,Water_Absorption,0.01,%,ISO 62,Engineering_Reference,Campus Plastics Database,LyondellBasell,Hostalen Material Sheet
+SRC013,POL003,Density,0.924,g/cm3,ISO 1183,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Lupolen 2420 H Technical Data Sheet
+SRC014,POL003,Tensile_Strength,11,MPa,ISO 527-1/-2,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Lupolen 2420 H Technical Data Sheet
+SRC015,POL003,Tensile_Modulus,260,MPa,ISO 527-1/-2,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Lupolen 2420 H Technical Data Sheet
+SRC016,POL003,Melting_or_Softening_Temperature,111,C,ISO 3146,Manufacturer_TDS,LyondellBasell TDS Repository,LyondellBasell,Lupolen 2420 H Technical Data Sheet
+SRC017,POL003,Water_Absorption,0.01,%,ISO 62,Engineering_Reference,Campus Plastics Database,LyondellBasell,Lupolen 2420 H Data Summary
+SRC018,POL004,Density,1.04,g/cm3,ISO 1183,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Terluran GP-22 Technical Data Sheet
+SRC019,POL004,Tensile_Strength,45,MPa,ISO 527-1/-2,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Terluran GP-22 Technical Data Sheet
+SRC020,POL004,Tensile_Modulus,2300,MPa,ISO 527-1/-2,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Terluran GP-22 Technical Data Sheet
+SRC021,POL004,Impact_Strength,19,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Terluran GP-22 Technical Data Sheet
+SRC022,POL004,Melting_or_Softening_Temperature,98,C,ISO 306,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Terluran GP-22 Technical Data Sheet
+SRC023,POL004,Water_Absorption,0.25,%,ISO 62,Engineering_Reference,Campus Plastics Database,INEOS Styrolution,Terluran GP-22 Material Datasheet
+SRC024,POL005,Density,1.04,g/cm3,ISO 1183,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Polystyrol 158 K Technical Data Sheet
+SRC025,POL005,Tensile_Strength,52,MPa,ISO 527-1/-2,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Polystyrol 158 K Technical Data Sheet
+SRC026,POL005,Tensile_Modulus,3200,MPa,ISO 527-1/-2,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Polystyrol 158 K Technical Data Sheet
+SRC027,POL005,Impact_Strength,3,kJ/m2,ISO 179-1/1eU,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Polystyrol 158 K Technical Data Sheet
+SRC028,POL005,Melting_or_Softening_Temperature,104,C,ISO 306,Manufacturer_TDS,INEOS Styrolution TDS,INEOS Styrolution,Polystyrol 158 K Technical Data Sheet
+SRC029,POL005,Water_Absorption,0.1,%,ISO 62,Engineering_Reference,Campus Plastics Database,INEOS Styrolution,Polystyrol 158 K Sheet
+SRC030,POL006,Density,1.14,g/cm3,ISO 1183,Manufacturer_TDS,Envalior Product Center,Envalior,Durethan B30S Datasheet
+SRC031,POL006,Tensile_Strength,80,MPa,ISO 527-1/-2,Manufacturer_TDS,Envalior Product Center,Envalior,Durethan B30S Datasheet
+SRC032,POL006,Tensile_Modulus,3000,MPa,ISO 527-1/-2,Manufacturer_TDS,Envalior Product Center,Envalior,Durethan B30S Datasheet
+SRC033,POL006,Impact_Strength,4.5,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Envalior Product Center,Envalior,Durethan B30S Datasheet
+SRC034,POL006,Melting_or_Softening_Temperature,222,C,ISO 11357-1/-3,Manufacturer_TDS,Envalior Product Center,Envalior,Durethan B30S Datasheet
+SRC035,POL006,Water_Absorption,9.5,%,ISO 62,Manufacturer_TDS,Envalior Product Center,Envalior,Durethan B30S Datasheet
+SRC036,POL007,Density,1.14,g/cm3,ISO 1183,Manufacturer_TDS,Celanese / DuPont Zytel Guide,Celanese,Zytel 101L NC010 Technical Datasheet
+SRC037,POL007,Tensile_Strength,85,MPa,ISO 527-1/-2,Manufacturer_TDS,Celanese / DuPont Zytel Guide,Celanese,Zytel 101L NC010 Technical Datasheet
+SRC038,POL007,Tensile_Modulus,3100,MPa,ISO 527-1/-2,Manufacturer_TDS,Celanese / DuPont Zytel Guide,Celanese,Zytel 101L NC010 Technical Datasheet
+SRC039,POL007,Impact_Strength,5.5,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Celanese / DuPont Zytel Guide,Celanese,Zytel 101L NC010 Technical Datasheet
+SRC040,POL007,Melting_or_Softening_Temperature,262,C,ISO 11357-1/-3,Manufacturer_TDS,Celanese / DuPont Zytel Guide,Celanese,Zytel 101L NC010 Technical Datasheet
+SRC041,POL007,Water_Absorption,8.5,%,ISO 62,Manufacturer_TDS,Celanese / DuPont Zytel Guide,Celanese,Zytel 101L NC010 Technical Datasheet
+SRC042,POL008,Density,1.2,g/cm3,ISO 1183-1,Manufacturer_TDS,Covestro Product Center,Covestro,Makrolon 2805 Product Datasheet
+SRC043,POL008,Tensile_Strength,65,MPa,ISO 527-1/-2,Manufacturer_TDS,Covestro Product Center,Covestro,Makrolon 2805 Product Datasheet
+SRC044,POL008,Tensile_Modulus,2400,MPa,ISO 527-1/-2,Manufacturer_TDS,Covestro Product Center,Covestro,Makrolon 2805 Product Datasheet
+SRC045,POL008,Impact_Strength,65,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Covestro Product Center,Covestro,Makrolon 2805 Product Datasheet
+SRC046,POL008,Melting_or_Softening_Temperature,145,C,ISO 306,Manufacturer_TDS,Covestro Product Center,Covestro,Makrolon 2805 Product Datasheet
+SRC047,POL008,Water_Absorption,0.3,%,ISO 62,Manufacturer_TDS,Covestro Product Center,Covestro,Makrolon 2805 Product Datasheet
+SRC048,POL009,Density,1.41,g/cm3,ISO 1183,Manufacturer_TDS,Celanese Product Center,Celanese,Hostaform C 9021 Technical Datasheet
+SRC049,POL009,Tensile_Strength,65,MPa,ISO 527-1/-2,Manufacturer_TDS,Celanese Product Center,Celanese,Hostaform C 9021 Technical Datasheet
+SRC050,POL009,Tensile_Modulus,2800,MPa,ISO 527-1/-2,Manufacturer_TDS,Celanese Product Center,Celanese,Hostaform C 9021 Technical Datasheet
+SRC051,POL009,Impact_Strength,6,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Celanese Product Center,Celanese,Hostaform C 9021 Technical Datasheet
+SRC052,POL009,Melting_or_Softening_Temperature,166,C,ISO 11357-1/-3,Manufacturer_TDS,Celanese Product Center,Celanese,Hostaform C 9021 Technical Datasheet
+SRC053,POL009,Water_Absorption,0.65,%,ISO 62,Manufacturer_TDS,Celanese Product Center,Celanese,Hostaform C 9021 Technical Datasheet
+SRC054,POL010,Density,1.19,g/cm3,ISO 1183,Manufacturer_TDS,Röhm Technical Center,Röhm GmbH,Plexiglas 7N Technical Datasheet
+SRC055,POL010,Tensile_Strength,77,MPa,ISO 527-1/-2,Manufacturer_TDS,Röhm Technical Center,Röhm GmbH,Plexiglas 7N Technical Datasheet
+SRC056,POL010,Tensile_Modulus,3300,MPa,ISO 527-1/-2,Manufacturer_TDS,Röhm Technical Center,Röhm GmbH,Plexiglas 7N Technical Datasheet
+SRC057,POL010,Impact_Strength,1.5,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Röhm Technical Center,Röhm GmbH,Plexiglas 7N Technical Datasheet
+SRC058,POL010,Melting_or_Softening_Temperature,107,C,ISO 306,Manufacturer_TDS,Röhm Technical Center,Röhm GmbH,Plexiglas 7N Technical Datasheet
+SRC059,POL010,Water_Absorption,0.3,%,ISO 62,Manufacturer_TDS,Röhm Technical Center,Röhm GmbH,Plexiglas 7N Technical Datasheet
+SRC060,POL011,Density,1.3,g/cm3,ISO 1183,Manufacturer_TDS,Envalior Product Center,Envalior,Pocan B1505 Technical Datasheet
+SRC061,POL011,Tensile_Strength,56,MPa,ISO 527-1/-2,Manufacturer_TDS,Envalior Product Center,Envalior,Pocan B1505 Technical Datasheet
+SRC062,POL011,Tensile_Modulus,2500,MPa,ISO 527-1/-2,Manufacturer_TDS,Envalior Product Center,Envalior,Pocan B1505 Technical Datasheet
+SRC063,POL011,Impact_Strength,4.5,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Envalior Product Center,Envalior,Pocan B1505 Technical Datasheet
+SRC064,POL011,Melting_or_Softening_Temperature,225,C,ISO 11357-1/-3,Manufacturer_TDS,Envalior Product Center,Envalior,Pocan B1505 Technical Datasheet
+SRC065,POL011,Water_Absorption,0.4,%,ISO 62,Manufacturer_TDS,Envalior Product Center,Envalior,Pocan B1505 Technical Datasheet
+SRC066,POL012,Density,1.65,g/cm3,ISO 1183,Manufacturer_TDS,Solvay Specialty Polymers TDS,Solvay,Ryton R-4-200BL Product Data Sheet
+SRC067,POL012,Tensile_Strength,165,MPa,ISO 527-1/-2,Manufacturer_TDS,Solvay Specialty Polymers TDS,Solvay,Ryton R-4-200BL Product Data Sheet
+SRC068,POL012,Tensile_Modulus,14500,MPa,ISO 527-1/-2,Manufacturer_TDS,Solvay Specialty Polymers TDS,Solvay,Ryton R-4-200BL Product Data Sheet
+SRC069,POL012,Impact_Strength,8.5,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Solvay Specialty Polymers TDS,Solvay,Ryton R-4-200BL Product Data Sheet
+SRC070,POL012,Melting_or_Softening_Temperature,280,C,ISO 11357-1/-3,Manufacturer_TDS,Solvay Specialty Polymers TDS,Solvay,Ryton R-4-200BL Product Data Sheet
+SRC071,POL012,Water_Absorption,0.02,%,ISO 62,Manufacturer_TDS,Solvay Specialty Polymers TDS,Solvay,Ryton R-4-200BL Product Data Sheet
+SRC072,POL013,Density,1.37,g/cm3,ISO 1183,Manufacturer_TDS,Envalior Material Hub,Envalior (formerly DSM),Arnite A02 307 Technical Datasheet
+SRC073,POL013,Tensile_Strength,85,MPa,ISO 527-1/-2,Manufacturer_TDS,Envalior Material Hub,Envalior (formerly DSM),Arnite A02 307 Technical Datasheet
+SRC074,POL013,Tensile_Modulus,3100,MPa,ISO 527-1/-2,Manufacturer_TDS,Envalior Material Hub,Envalior (formerly DSM),Arnite A02 307 Technical Datasheet
+SRC075,POL013,Impact_Strength,3,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Envalior Material Hub,Envalior (formerly DSM),Arnite A02 307 Technical Datasheet
+SRC076,POL013,Melting_or_Softening_Temperature,255,C,ISO 11357-1/-3,Manufacturer_TDS,Envalior Material Hub,Envalior (formerly DSM),Arnite A02 307 Technical Datasheet
+SRC077,POL013,Water_Absorption,0.5,%,ISO 62,Manufacturer_TDS,Envalior Material Hub,Envalior (formerly DSM),Arnite A02 307 Technical Datasheet
+SRC078,POL014,Density,1.3,g/cm3,ISO 1183,Manufacturer_TDS,Victrex Technical Literature,Victrex plc,Victrex PEEK 450G Datasheet
+SRC079,POL014,Tensile_Strength,100,MPa,ISO 527-1/-2,Manufacturer_TDS,Victrex Technical Literature,Victrex plc,Victrex PEEK 450G Datasheet
+SRC080,POL014,Tensile_Modulus,3800,MPa,ISO 527-1/-2,Manufacturer_TDS,Victrex Technical Literature,Victrex plc,Victrex PEEK 450G Datasheet
+SRC081,POL014,Impact_Strength,7,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Victrex Technical Literature,Victrex plc,Victrex PEEK 450G Datasheet
+SRC082,POL014,Melting_or_Softening_Temperature,343,C,ISO 11357-1/-3,Manufacturer_TDS,Victrex Technical Literature,Victrex plc,Victrex PEEK 450G Datasheet
+SRC083,POL014,Water_Absorption,0.4,%,ISO 62,Manufacturer_TDS,Victrex Technical Literature,Victrex plc,Victrex PEEK 450G Datasheet
+SRC084,POL015,Density,2.16,g/cm3,ASTM D4894,Manufacturer_TDS,Chemours Fluoropolymers,The Chemours Company,Teflon PTFE 7A Resin Product Bulletin
+SRC085,POL015,Tensile_Strength,28,MPa,ASTM D4894,Manufacturer_TDS,Chemours Fluoropolymers,The Chemours Company,Teflon PTFE 7A Resin Product Bulletin
+SRC086,POL015,Tensile_Modulus,550,MPa,ASTM D638 / ISO 527,Manufacturer_TDS,Chemours Fluoropolymers,The Chemours Company,Teflon PTFE 7A Resin Product Bulletin
+SRC087,POL015,Impact_Strength,16,kJ/m2,ISO 179 / ASTM D256,Manufacturer_TDS,Chemours Fluoropolymers,The Chemours Company,Teflon PTFE 7A Resin Product Bulletin
+SRC088,POL015,Melting_or_Softening_Temperature,327,C,ASTM D4894 / ISO 3146,Manufacturer_TDS,Chemours Fluoropolymers,The Chemours Company,Teflon PTFE 7A Resin Product Bulletin
+SRC089,POL015,Water_Absorption,0.01,%,ASTM D570 / ISO 62,Manufacturer_TDS,Chemours Fluoropolymers,The Chemours Company,Teflon PTFE 7A Resin Product Bulletin
+SRC090,POL016,Density,1.24,g/cm3,ISO 1183,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Udel P-1700 Polysulfone Product Sheet
+SRC091,POL016,Tensile_Strength,70,MPa,ISO 527-1/-2,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Udel P-1700 Polysulfone Product Sheet
+SRC092,POL016,Tensile_Modulus,2500,MPa,ISO 527-1/-2,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Udel P-1700 Polysulfone Product Sheet
+SRC093,POL016,Impact_Strength,6,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Udel P-1700 Polysulfone Product Sheet
+SRC094,POL016,Melting_or_Softening_Temperature,187,C,ISO 306,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Udel P-1700 Polysulfone Product Sheet
+SRC095,POL016,Water_Absorption,0.8,%,ISO 62,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Udel P-1700 Polysulfone Product Sheet
+SRC096,POL017,Density,1.27,g/cm3,ISO 1183,Manufacturer_TDS,SABIC Specialties,SABIC,ULTEM Resin 1000 Product Datasheet
+SRC097,POL017,Tensile_Strength,105,MPa,ISO 527-1/-2,Manufacturer_TDS,SABIC Specialties,SABIC,ULTEM Resin 1000 Product Datasheet
+SRC098,POL017,Tensile_Modulus,3200,MPa,ISO 527-1/-2,Manufacturer_TDS,SABIC Specialties,SABIC,ULTEM Resin 1000 Product Datasheet
+SRC099,POL017,Impact_Strength,4,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,SABIC Specialties,SABIC,ULTEM Resin 1000 Product Datasheet
+SRC100,POL017,Melting_or_Softening_Temperature,217,C,ISO 306,Manufacturer_TDS,SABIC Specialties,SABIC,ULTEM Resin 1000 Product Datasheet
+SRC101,POL017,Water_Absorption,0.7,%,ISO 62,Manufacturer_TDS,SABIC Specialties,SABIC,ULTEM Resin 1000 Product Datasheet
+SRC102,POL018,Density,1.13,g/cm3,ISO 1183,Manufacturer_TDS,Covestro Solution Center,Covestro,Bayblend T65 XF Product Datasheet
+SRC103,POL018,Tensile_Strength,54,MPa,ISO 527-1/-2,Manufacturer_TDS,Covestro Solution Center,Covestro,Bayblend T65 XF Product Datasheet
+SRC104,POL018,Tensile_Modulus,2400,MPa,ISO 527-1/-2,Manufacturer_TDS,Covestro Solution Center,Covestro,Bayblend T65 XF Product Datasheet
+SRC105,POL018,Impact_Strength,45,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Covestro Solution Center,Covestro,Bayblend T65 XF Product Datasheet
+SRC106,POL018,Melting_or_Softening_Temperature,120,C,ISO 306,Manufacturer_TDS,Covestro Solution Center,Covestro,Bayblend T65 XF Product Datasheet
+SRC107,POL018,Water_Absorption,0.2,%,ISO 62,Manufacturer_TDS,Covestro Solution Center,Covestro,Bayblend T65 XF Product Datasheet
+SRC108,POL019,Density,1.21,g/cm3,ISO 1183,Manufacturer_TDS,SABIC Specialties,SABIC,Noryl GFN2 Resin Product Datasheet
+SRC109,POL019,Tensile_Strength,90,MPa,ISO 527-1/-2,Manufacturer_TDS,SABIC Specialties,SABIC,Noryl GFN2 Resin Product Datasheet
+SRC110,POL019,Tensile_Modulus,5300,MPa,ISO 527-1/-2,Manufacturer_TDS,SABIC Specialties,SABIC,Noryl GFN2 Resin Product Datasheet
+SRC111,POL019,Impact_Strength,7,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,SABIC Specialties,SABIC,Noryl GFN2 Resin Product Datasheet
+SRC112,POL019,Melting_or_Softening_Temperature,145,C,ISO 306,Manufacturer_TDS,SABIC Specialties,SABIC,Noryl GFN2 Resin Product Datasheet
+SRC113,POL019,Water_Absorption,0.06,%,ISO 62,Manufacturer_TDS,SABIC Specialties,SABIC,Noryl GFN2 Resin Product Datasheet
+SRC114,POL020,Density,1.78,g/cm3,ISO 1183,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Solef 6010 PVDF Technical Datasheet
+SRC115,POL020,Tensile_Strength,55,MPa,ISO 527-1/-2,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Solef 6010 PVDF Technical Datasheet
+SRC116,POL020,Tensile_Modulus,2100,MPa,ISO 527-1/-2,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Solef 6010 PVDF Technical Datasheet
+SRC117,POL020,Impact_Strength,9,kJ/m2,ISO 179-1/1eA,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Solef 6010 PVDF Technical Datasheet
+SRC118,POL020,Melting_or_Softening_Temperature,172,C,ISO 11357-1/-3,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Solef 6010 PVDF Technical Datasheet
+SRC119,POL020,Water_Absorption,0.04,%,ISO 62,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Solef 6010 PVDF Technical Datasheet
+OPT001,POL001,Optical_Transparency,Medium,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,LyondellBasell Technical Center,LyondellBasell,Moplen HP500N Technical Data Sheet
+OPT002,POL002,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,LyondellBasell Technical Center,LyondellBasell,Hostalen ACP 5831 D Technical Data Sheet
+OPT003,POL003,Optical_Transparency,Medium,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,LyondellBasell Technical Center,LyondellBasell,Lupolen 2420 H Technical Data Sheet
+OPT004,POL004,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,INEOS Styrolution TDS Center,INEOS Styrolution,Terluran GP-22 Technical Data Sheet
+OPT005,POL005,Optical_Transparency,High,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,INEOS Styrolution TDS Center,INEOS Styrolution,Polystyrol 158 K Technical Data Sheet
+OPT006,POL006,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Envalior Material Hub,Envalior (formerly LANXESS),Durethan B30S Product Datasheet
+OPT007,POL007,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Celanese Engineered Materials,Celanese (formerly DuPont),Zytel 101L NC010 Technical Data Sheet
+OPT008,POL008,Optical_Transparency,High,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Covestro Solution Center,Covestro,Makrolon 2805 Product Datasheet
+OPT009,POL009,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Celanese Engineered Materials,Celanese,Hostaform C 9021 Product Datasheet
+OPT010,POL010,Optical_Transparency,High,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Röhm GmbH Technical Center,Röhm GmbH,Plexiglas 7N Technical Datasheet
+OPT011,POL011,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Envalior Material Hub,Envalior (formerly LANXESS),Pocan B1505 Technical Datasheet
+OPT012,POL012,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Ryton R-4-200BL Product Data Sheet
+OPT013,POL013,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Envalior Material Hub,Envalior (formerly DSM),Arnite A02 307 Technical Datasheet
+OPT014,POL014,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Victrex Technical Literature,Victrex plc,Victrex PEEK 450G Datasheet
+OPT015,POL015,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Chemours Fluoropolymers,The Chemours Company,Teflon PTFE 7A Resin Product Bulletin
+OPT016,POL016,Optical_Transparency,High,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Udel P-1700 Polysulfone Product Sheet
+OPT017,POL017,Optical_Transparency,High,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,SABIC Specialties,SABIC,ULTEM Resin 1000 Product Datasheet
+OPT018,POL018,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Covestro Solution Center,Covestro,Bayblend T65 XF Product Datasheet
+OPT019,POL019,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,SABIC Specialties,SABIC,Noryl GFN2 Resin Product Datasheet
+OPT020,POL020,Optical_Transparency,Low,N/A,Visual / ASTM D1003 / ISO 13468,Manufacturer_TDS,Solvay Specialty Polymers,Solvay,Solef 6010 PVDF Technical Datasheet

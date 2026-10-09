@@ -6,3 +6,8 @@ pandas
 numpy
 pydantic
 groq
+PyJWT
+argon2-cffi
+email-validator
+pytest
+PyJWT

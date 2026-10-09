@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 from bson import ObjectId
 
 import math
@@ -23,14 +23,85 @@ from database.collections import (
 from api.schemas import (
     RecommendationRequest,
     CustomRecommendationRequest,
+    RegisterRequest,
+    LoginRequest,
 )
+from api.auth import (
+    clear_session_cookie,
+    get_current_user,
+    hash_password,
+    normalize_email,
+    public_user,
+    set_session_cookie,
+    verify_password,
+)
+from database.collections import users_collection
+from pymongo.errors import DuplicateKeyError
 
 
 # ============================================================
 # ROUTER
 # ============================================================
 
-router = APIRouter()
+router = APIRouter(dependencies=[Depends(get_current_user)])
+auth_router = APIRouter(prefix="/auth")
+
+_login_attempts = {}
+_MAX_LOGIN_ATTEMPTS = 10
+_LOGIN_WINDOW_SECONDS = 300
+
+
+@auth_router.post("/register")
+def register(request: RegisterRequest, response: Response):
+    email = normalize_email(str(request.email))
+    now = datetime.utcnow()
+    try:
+        user_id = users_collection.insert_one(
+            {
+                "email": email,
+                "display_name": request.display_name.strip(),
+                "organization": request.organization,
+                "password_hash": hash_password(request.password),
+                "created_at": now,
+                "updated_at": now,
+            }
+        ).inserted_id
+    except DuplicateKeyError:
+        raise HTTPException(status_code=409, detail="An account with that email already exists.")
+
+    user = users_collection.find_one({"_id": user_id})
+    set_session_cookie(response, str(user_id))
+    return {"user": public_user(user)}
+
+
+@auth_router.post("/login")
+def login(request: LoginRequest, response: Response, http_request: Request):
+    now = datetime.utcnow().timestamp()
+    key = f"{http_request.client.host if http_request.client else 'unknown'}:{normalize_email(str(request.email))}"
+    attempts = [timestamp for timestamp in _login_attempts.get(key, []) if now - timestamp < _LOGIN_WINDOW_SECONDS]
+    if len(attempts) >= _MAX_LOGIN_ATTEMPTS:
+        raise HTTPException(status_code=429, detail="Too many login attempts. Please try again later.")
+    attempts.append(now)
+    _login_attempts[key] = attempts
+
+    user = users_collection.find_one({"email": normalize_email(str(request.email))})
+    if not user or not verify_password(request.password, user["password_hash"]):
+        raise HTTPException(status_code=401, detail="Invalid email or password.")
+
+    _login_attempts.pop(key, None)
+    set_session_cookie(response, str(user["_id"]))
+    return {"user": public_user(user)}
+
+
+@auth_router.get("/me")
+def me(user=Depends(get_current_user)):
+    return {"user": public_user(user)}
+
+
+@auth_router.post("/logout")
+def logout(response: Response):
+    clear_session_cookie(response)
+    return {"message": "Logged out successfully."}
 
 
 # ============================================================
@@ -224,7 +295,8 @@ def get_supported_properties():
     response_model=None,
 )
 def recommend(
-    request: RecommendationRequest
+    request: RecommendationRequest,
+    user=Depends(get_current_user),
 ):
 
     try:
@@ -261,9 +333,8 @@ def recommend(
             ),
         }
 
-        save_recommendation_history(
-            history_data
-        )
+        history_id = save_recommendation_history(history_data, user["_id"])
+        result["history_id"] = history_id
 
         return make_json_safe(result)
 
@@ -294,7 +365,8 @@ def recommend(
     response_model=None,
 )
 def recommend_custom(
-    request: CustomRecommendationRequest
+    request: CustomRecommendationRequest,
+    user=Depends(get_current_user),
 ):
 
     try:
@@ -378,9 +450,8 @@ def recommend_custom(
             "requirements": requirements,
         }
 
-        save_recommendation_history(
-            history_data
-        )
+        history_id = save_recommendation_history(history_data, user["_id"])
+        result["history_id"] = history_id
 
         return make_json_safe(result)
 
@@ -407,12 +478,12 @@ def recommend_custom(
 # ============================================================
 
 @router.get("/history")
-def get_history():
+def get_history(user=Depends(get_current_user)):
 
     try:
 
         documents = list(
-            history_collection.find({}).sort(
+            history_collection.find({"user_id": user["_id"]}).sort(
                 "created_at",
                 -1
             )
@@ -425,6 +496,7 @@ def get_history():
             document["history_id"] = str(
                 document.pop("_id")
             )
+            document.pop("user_id", None)
 
             # Backward compatibility for history records created before
             # requirement details were stored. Predefined analyses can
@@ -473,8 +545,30 @@ def get_history():
 # DELETE RECOMMENDATION HISTORY
 # ============================================================
 
+@router.get("/history/{history_id}")
+def get_history_record(history_id: str, user=Depends(get_current_user)):
+    if not ObjectId.is_valid(history_id):
+        raise HTTPException(status_code=400, detail="Invalid history record ID.")
+
+    document = history_collection.find_one(
+        {"_id": ObjectId(history_id), "user_id": user["_id"]}
+    )
+    if not document:
+        raise HTTPException(status_code=404, detail="History record not found.")
+
+    document["history_id"] = str(document.pop("_id"))
+    document.pop("user_id", None)
+    return make_json_safe(document)
+
+
+@router.delete("/history")
+def clear_history(user=Depends(get_current_user)):
+    history_collection.delete_many({"user_id": user["_id"]})
+    return {"message": "Your analysis history was cleared."}
+
+
 @router.delete("/history/{history_id}")
-def delete_history(history_id: str):
+def delete_history(history_id: str, user=Depends(get_current_user)):
 
     try:
 
@@ -485,7 +579,7 @@ def delete_history(history_id: str):
             )
 
         result = history_collection.delete_one(
-            {"_id": ObjectId(history_id)}
+            {"_id": ObjectId(history_id), "user_id": user["_id"]}
         )
 
         if result.deleted_count == 0:
@@ -518,7 +612,7 @@ def delete_history(history_id: str):
 # ============================================================
 
 @router.post("/chat")
-def polymer_chat(request: dict):
+def polymer_chat(request: dict, user=Depends(get_current_user)):
     """Interactive engineering assistant powered by Groq.
 
     The deterministic MCDM engine remains the decision maker.
@@ -539,6 +633,17 @@ def polymer_chat(request: dict):
         from groq import Groq
 
         context = request.get("context") or {}
+        history_id = context.get("history_id")
+        if history_id and ObjectId.is_valid(history_id):
+            owned_record = history_collection.find_one(
+                {"_id": ObjectId(history_id), "user_id": user["_id"]}
+            )
+            if owned_record:
+                context = {
+                    **owned_record,
+                    "history_id": history_id,
+                    "type": "custom" if owned_record.get("requirements") else "predefined",
+                }
         history = request.get("history") or []
 
         # If this is a predefined analysis, recover the exact

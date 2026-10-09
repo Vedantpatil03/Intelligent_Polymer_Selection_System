@@ -1,17 +1,22 @@
-import { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import {
   BrowserRouter,
   Routes,
   Route,
   NavLink,
+  Navigate,
+  useLocation,
   useNavigate,
 } from "react-router-dom";
 
 import "./App.css";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
+  import.meta.env.VITE_API_BASE_URL ||
+  (typeof window !== "undefined"
+    ? `${window.location.protocol}//${window.location.hostname}:8000`
+    : "http://localhost:8000");
 
 
 // ============================================================
@@ -20,6 +25,7 @@ const API_BASE_URL =
 
 const api = axios.create({
   baseURL: API_BASE_URL,
+  withCredentials: true,
 });
 
 
@@ -70,6 +76,50 @@ const loadChatContext = () => {
   }
 };
 
+const AuthContext = React.createContext(null);
+
+function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  const loadSession = async () => {
+    try {
+      const response = await api.get("/auth/me");
+      setUser(response.data.user);
+    } catch (error) {
+      if (error.response?.status !== 401) {
+        console.error("Unable to check authentication session:", error);
+      }
+      setUser(null);
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadSession();
+  }, []);
+
+  const logout = async () => {
+    try {
+      await api.post("/auth/logout");
+    } finally {
+      localStorage.removeItem(CHAT_CONTEXT_KEY);
+      setUser(null);
+    }
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, authLoading, setUser, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+function useAuth() {
+  return React.useContext(AuthContext);
+}
+
 
 const getApiErrorMessage = (error, fallbackMessage) => {
   const detail = error?.response?.data?.detail;
@@ -105,6 +155,9 @@ const getApiErrorMessage = (error, fallbackMessage) => {
 // ============================================================
 
 function Layout({ children }) {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <div className="app">
 
@@ -191,8 +244,6 @@ function Layout({ children }) {
         }
       `}</style>
 
-      {/* HEADER */}
-
       <header className="header">
 
         <div className="header-content">
@@ -220,7 +271,7 @@ function Layout({ children }) {
           </NavLink>
 
 
-          <nav className="navigation">
+          {user && <nav className="navigation">
 
             <NavLink
               to="/"
@@ -259,14 +310,26 @@ function Layout({ children }) {
               History
             </NavLink>
 
-          </nav>
+          </nav>}
 
 
-          <div className="status">
+          <div className="status user-status">
 
             <span className="status-dot"></span>
 
-            System Ready
+            <span className="user-status-name">{user?.display_name || "System Ready"}</span>
+            {user && (
+              <button
+                type="button"
+                className="logout-button"
+                onClick={async () => {
+                  await logout();
+                  navigate("/login");
+                }}
+              >
+                Logout
+              </button>
+            )}
 
           </div>
 
@@ -280,19 +343,168 @@ function Layout({ children }) {
       {children}
 
 
-      {/* FOOTER */}
-
       <footer className="footer">
-
-        <p>
-          © 2026 — Polymer Engineering Decision Support System
-        </p>
-
+        <p>© 2026 — Polymer Engineering Decision Support System</p>
       </footer>
-
       <PolymerChatbot />
 
     </div>
+  );
+}
+
+function ProtectedRoute({ children }) {
+  const { user, authLoading } = useAuth();
+  const location = useLocation();
+
+  if (authLoading) {
+    return <main className="main-container"><p>Checking your session…</p></main>;
+  }
+
+  if (!user) {
+    return <Navigate to="/login" replace state={{ from: location }} />;
+  }
+
+  return children;
+}
+
+function PasswordVisibilityButton({ visible, onClick, label }) {
+  return (
+    <button
+      type="button"
+      className="password-visibility-button"
+      onClick={onClick}
+      aria-label={visible ? `Hide ${label}` : `Show ${label}`}
+      title={visible ? `Hide ${label}` : `Show ${label}`}
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        {visible ? (
+          <>
+            <path d="M3 3l18 18" />
+            <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8" />
+            <path d="M9.9 5.3A11.7 11.7 0 0 1 12 5c5 0 8.7 4.1 9.8 7a12.8 12.8 0 0 1-3.1 4.5" />
+            <path d="M6.6 6.6A12.5 12.5 0 0 0 2.2 12c1.1 2.9 4.8 7 9.8 7a10.8 10.8 0 0 0 3.1-.5" />
+          </>
+        ) : (
+          <>
+            <path d="M2.2 12C3.3 9.1 7 5 12 5s8.7 4.1 9.8 7c-1.1 2.9-4.8 7-9.8 7S3.3 14.9 2.2 12Z" />
+            <circle cx="12" cy="12" r="3" />
+          </>
+        )}
+      </svg>
+    </button>
+  );
+}
+
+function AuthPage({ mode }) {
+  const isRegister = mode === "register";
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user, setUser } = useAuth();
+  const [email, setEmail] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (user) navigate("/", { replace: true });
+  }, [user, navigate]);
+
+  const submit = async (event) => {
+    event.preventDefault();
+    setError("");
+    if (isRegister && !displayName.trim()) {
+      setError("Please enter your name.");
+      return;
+    }
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters.");
+      return;
+    }
+    if (isRegister && password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+    try {
+      setLoading(true);
+      const response = await api.post(
+        isRegister ? "/auth/register" : "/auth/login",
+        isRegister
+          ?           {
+              email,
+              display_name: displayName,
+              password,
+            }
+          : { email, password },
+      );
+      localStorage.removeItem(CHAT_CONTEXT_KEY);
+      setUser(response.data.user);
+      const destination = location.state?.from?.pathname || "/";
+      navigate(destination, { replace: true });
+    } catch (requestError) {
+      setError(getApiErrorMessage(requestError, "Unable to complete authentication."));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <main className="auth-page">
+      <section className="auth-card">
+        <div className="auth-card-heading">
+          <div>
+            <span className="section-label">{isRegister ? "CREATE ACCOUNT" : "WELCOME BACK"}</span>
+            <p className="auth-kicker">PolyGuide AI workspace</p>
+          </div>
+        </div>
+        <h2>{isRegister ? "Create your account" : "Sign in to PolyGuide AI"}</h2>
+        <p className="auth-description">
+          
+            
+        </p>
+        {error && <div className="error-message">{error}</div>}
+        <form className="auth-form" onSubmit={submit}>
+          {isRegister && (
+            <label className="auth-field">
+              Full name
+              <input value={displayName} onChange={(event) => setDisplayName(event.target.value)} autoComplete="name" required />
+            </label>
+          )}
+          <label className="auth-field">
+            Email
+            <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" required />
+          </label>
+          <label className="auth-field">
+            Password
+            <span className="password-input-wrap">
+              <input type={showPassword ? "text" : "password"} value={password} onChange={(event) => setPassword(event.target.value)} autoComplete={isRegister ? "new-password" : "current-password"} minLength={8} required />
+              <PasswordVisibilityButton visible={showPassword} onClick={() => setShowPassword((current) => !current)} label="password" />
+            </span>
+          </label>
+          {isRegister && (
+            <label className="auth-field">
+              Confirm Password
+              <span className="password-input-wrap">
+                <input type={showConfirmPassword ? "text" : "password"} value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} autoComplete="new-password" minLength={8} required />
+                <PasswordVisibilityButton visible={showConfirmPassword} onClick={() => setShowConfirmPassword((current) => !current)} label="confirm password" />
+              </span>
+            </label>
+          )}
+          <button className="primary-button auth-submit" type="submit" disabled={loading}>
+            {loading ? "Please wait…" : isRegister ? "Create account" : "Sign in"}
+          </button>
+        </form>
+        <p className="auth-switch">
+          {isRegister ? "Already have an account? " : "Need an account? "}
+          <NavLink to={isRegister ? "/login" : "/register"}>
+            {isRegister ? "Sign in" : "Register"}
+          </NavLink>
+        </p>
+      </section>
+    </main>
   );
 }
 
@@ -1260,6 +1472,7 @@ function RecommendationPage() {
 
       saveChatContext({
         type: "predefined",
+        history_id: data.history_id,
         analysis_id: data.analysis_id || selectedApplication,
         application_name: data.application_name,
         total_eligible: data.total_eligible,
@@ -2199,6 +2412,7 @@ function CustomPage() {
 
         saveChatContext({
           type: "custom",
+          history_id: data.history_id,
           analysis_id: data.analysis_id || null,
           application_name: data.application_name,
           total_eligible: data.total_eligible,
@@ -3943,6 +4157,7 @@ const renderChatMessage = (content) => {
 
 function PolymerChatbot() {
 
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [context, setContext] = useState(null);
   const [messages, setMessages] = useState([
@@ -3961,10 +4176,22 @@ function PolymerChatbot() {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    setContext(null);
+    setMessages([
+      {
+        role: "assistant",
+        content: user
+          ? "Hello! I’m PolyGuide AI. I can explain the current polymer recommendation using the project’s MCDM results and polymer data."
+          : "Sign in to use PolyGuide AI with your private recommendation context.",
+      },
+    ]);
+  }, [user?.user_id]);
+
   const sendMessage = async (presetMessage = null) => {
     const text = String(presetMessage ?? input).trim();
 
-    if (!text || loading) return;
+    if (!text || loading || !user) return;
 
     const activeContext = context || loadChatContext();
     const userMessage = { role: "user", content: text };
@@ -4012,8 +4239,9 @@ function PolymerChatbot() {
     setMessages([
       {
         role: "assistant",
-        content:
-          "Chat cleared. Ask me about the current polymer recommendation.",
+        content: user
+          ? "Chat cleared. Ask me about the current polymer recommendation."
+          : "Sign in to use PolyGuide AI with your private recommendation context.",
       },
     ]);
   };
@@ -4371,33 +4599,18 @@ function App() {
 
     <BrowserRouter>
 
-      <Layout>
-
-        <Routes>
-
-          <Route
-            path="/"
-            element={<Dashboard />}
-          />
-
-          <Route
-            path="/recommendation"
-            element={<RecommendationPage />}
-          />
-
-          <Route
-            path="/custom"
-            element={<CustomPage />}
-          />
-
-          <Route
-            path="/history"
-            element={<HistoryPage />}
-          />
-
-        </Routes>
-
-      </Layout>
+      <AuthProvider>
+        <Layout>
+          <Routes>
+            <Route path="/login" element={<AuthPage mode="login" />} />
+            <Route path="/register" element={<AuthPage mode="register" />} />
+            <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/recommendation" element={<ProtectedRoute><RecommendationPage /></ProtectedRoute>} />
+            <Route path="/custom" element={<ProtectedRoute><CustomPage /></ProtectedRoute>} />
+            <Route path="/history" element={<ProtectedRoute><HistoryPage /></ProtectedRoute>} />
+          </Routes>
+        </Layout>
+      </AuthProvider>
 
     </BrowserRouter>
 

@@ -17,7 +17,7 @@ This project is a full-stack polymer recommendation application that combines a 
 Create a local frontend environment file with:
 
 ```bash
-VITE_API_BASE_URL=http://127.0.0.1:8000
+VITE_API_BASE_URL=http://localhost:8000
 ```
 
 This variable belongs in the frontend app and is used by Vite at build/runtime. Do not put MongoDB or Groq secrets in the frontend.
@@ -31,8 +31,12 @@ MONGODB_URI=
 MONGODB_DATABASE=polymer_selection_db
 GROQ_API_KEY=
 GROQ_MODEL=openai/gpt-oss-20b
+AUTH_SECRET_KEY=replace-with-a-long-random-secret
+AUTH_SESSION_TTL_HOURS=24
 CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 FRONTEND_URL=
+COOKIE_SECURE=false
+COOKIE_SAMESITE=lax
 ```
 
 Variable notes:
@@ -41,8 +45,12 @@ Variable notes:
 - `MONGODB_DATABASE`: database name to use inside MongoDB Atlas.
 - `GROQ_API_KEY`: Groq API key used only on the backend.
 - `GROQ_MODEL`: model used by the PolyGuide AI chat flow.
+- `AUTH_SECRET_KEY`: long random signing secret used for HttpOnly authentication cookies. Keep this only in the backend environment.
+- `AUTH_SESSION_TTL_HOURS`: authentication session lifetime.
 - `CORS_ORIGINS`: allowed frontend origins for local FastAPI development. Add the deployed Vercel URL in Render as needed.
 - `FRONTEND_URL`: optional production frontend URL for CORS on the backend and deployment configuration.
+- `COOKIE_SECURE`: set to `true` on HTTPS Render/Vercel deployments; keep `false` for local HTTP development.
+- `COOKIE_SAMESITE`: use `lax` locally and `none` when frontend/backend are on different HTTPS sites.
 
 ## Deployment notes
 
@@ -79,8 +87,12 @@ MONGODB_URI=
 MONGODB_DATABASE=polymer_selection_db
 GROQ_API_KEY=
 GROQ_MODEL=openai/gpt-oss-20b
+AUTH_SECRET_KEY=replace-with-a-long-random-secret
+AUTH_SESSION_TTL_HOURS=24
 CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173,https://your-vercel-domain
 FRONTEND_URL=https://your-vercel-domain
+COOKIE_SECURE=true
+COOKIE_SAMESITE=none
 ```
 
 Do not commit real credentials to source control. Keep environment secrets only in the deployment platform.

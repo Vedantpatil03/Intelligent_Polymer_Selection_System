@@ -3,7 +3,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routes import router
+from .routes import router, auth_router
 
 
 def get_cors_origins():
@@ -16,6 +16,7 @@ def get_cors_origins():
         origins = [
             "http://localhost:5173",
             "http://127.0.0.1:5173",
+            "https://polyguideai.vercel.app",
         ]
 
     frontend_url = os.getenv("FRONTEND_URL")
@@ -66,6 +67,7 @@ app.add_middleware(
 # ============================================================
 
 app.include_router(router)
+app.include_router(auth_router)
 
 
 # ============================================================

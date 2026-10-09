@@ -12,6 +12,10 @@ properties_collection = db["polymer_properties"]
 sources_collection = db["property_sources"]
 applications_collection = db["applications"]
 history_collection = db["recommendation_history"]
+users_collection = db["users"]
+
+users_collection.create_index("email", unique=True)
+history_collection.create_index([("user_id", 1), ("created_at", -1)])
 
 
 def make_json_safe(value):
@@ -58,10 +62,11 @@ def get_applications():
     return pd.DataFrame(documents)
 
 
-def save_recommendation_history(history_data):
+def save_recommendation_history(history_data, user_id):
     # Clean NaN/Infinity before inserting so future history records are valid JSON/API data.
     history_data = make_json_safe(history_data.copy())
     history_data["created_at"] = datetime.utcnow()
+    history_data["user_id"] = user_id
 
     result = history_collection.insert_one(history_data)
     return str(result.inserted_id)

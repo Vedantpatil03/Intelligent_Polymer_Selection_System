@@ -1,6 +1,7 @@
 from typing import Any, List, Union
 
 from pydantic import BaseModel, Field
+from pydantic import EmailStr, field_validator
 
 
 # ============================================================
@@ -20,6 +21,34 @@ class RecommendationRequest(BaseModel):
         le=20,
         description="Number of recommendations to return"
     )
+
+
+class RegisterRequest(BaseModel):
+    email: EmailStr
+    display_name: str = Field(..., min_length=1, max_length=80)
+    organization: str | None = Field(default=None, max_length=120)
+    password: str = Field(..., min_length=8, max_length=128)
+
+    @field_validator("display_name")
+    @classmethod
+    def display_name_not_blank(cls, value: str) -> str:
+        value = value.strip()
+        if not value:
+            raise ValueError("Name cannot be blank.")
+        return value
+
+    @field_validator("organization")
+    @classmethod
+    def organization_optional(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        value = value.strip()
+        return value or None
+
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str = Field(..., min_length=1, max_length=128)
 
 
 # ============================================================

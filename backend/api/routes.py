@@ -52,7 +52,7 @@ _LOGIN_WINDOW_SECONDS = 300
 
 
 @auth_router.post("/register")
-def register(request: RegisterRequest, response: Response):
+def register(request: RegisterRequest, response: Response, http_request: Request):
     email = normalize_email(str(request.email))
     now = datetime.utcnow()
     try:
@@ -70,7 +70,7 @@ def register(request: RegisterRequest, response: Response):
         raise HTTPException(status_code=409, detail="An account with that email already exists.")
 
     user = users_collection.find_one({"_id": user_id})
-    set_session_cookie(response, str(user_id))
+    set_session_cookie(response, str(user_id), http_request)
     return {"user": public_user(user)}
 
 
@@ -89,7 +89,7 @@ def login(request: LoginRequest, response: Response, http_request: Request):
         raise HTTPException(status_code=401, detail="Invalid email or password.")
 
     _login_attempts.pop(key, None)
-    set_session_cookie(response, str(user["_id"]))
+    set_session_cookie(response, str(user["_id"]), http_request)
     return {"user": public_user(user)}
 
 

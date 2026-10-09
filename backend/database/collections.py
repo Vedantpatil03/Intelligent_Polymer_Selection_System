@@ -1,5 +1,5 @@
 import math
-from datetime import datetime
+from datetime import datetime, timezone
 
 import pandas as pd
 from pymongo.errors import PyMongoError
@@ -65,7 +65,7 @@ def get_applications():
 def save_recommendation_history(history_data, user_id):
     # Clean NaN/Infinity before inserting so future history records are valid JSON/API data.
     history_data = make_json_safe(history_data.copy())
-    history_data["created_at"] = datetime.utcnow()
+    history_data["created_at"] = datetime.now(timezone.utc)
     history_data["user_id"] = user_id
 
     result = history_collection.insert_one(history_data)

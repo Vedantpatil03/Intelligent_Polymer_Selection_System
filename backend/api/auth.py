@@ -2,6 +2,7 @@ import os
 import secrets
 from datetime import datetime, timedelta, timezone
 from typing import Any
+from urllib.parse import urlparse
 
 import jwt
 from argon2 import PasswordHasher
@@ -52,14 +53,39 @@ def create_session_token(user_id: str) -> str:
     )
 
 
-def set_session_cookie(response: Response, user_id: str) -> None:
+def _cookie_settings(request: Request | None) -> tuple[bool, str]:
+    configured_secure = os.getenv("COOKIE_SECURE")
+    configured_samesite = os.getenv("COOKIE_SAMESITE")
+
+    secure = configured_secure.casefold() == "true" if configured_secure else False
+    samesite = (configured_samesite or "lax").casefold()
+    if samesite not in {"lax", "strict", "none"}:
+        samesite = "lax"
+
+    if request:
+        origin = request.headers.get("origin")
+        origin_host = urlparse(origin).hostname if origin else None
+        is_cross_origin = bool(origin_host and origin_host != request.url.hostname)
+
+        # Vercel and Render are different sites. Browsers require a Secure,
+        # SameSite=None cookie for that credentialed cross-origin request.
+        if request.url.scheme == "https" or is_cross_origin:
+            secure = True
+        if is_cross_origin:
+            samesite = "none"
+
+    return secure, samesite
+
+
+def set_session_cookie(response: Response, user_id: str, request: Request | None = None) -> None:
+    secure, samesite = _cookie_settings(request)
     response.set_cookie(
         AUTH_COOKIE_NAME,
         create_session_token(user_id),
         max_age=SESSION_TTL_HOURS * 60 * 60,
         httponly=True,
-        secure=os.getenv("COOKIE_SECURE", "false").casefold() == "true",
-        samesite=os.getenv("COOKIE_SAMESITE", "lax"),
+        secure=secure,
+        samesite=samesite,
         path="/",
     )
 

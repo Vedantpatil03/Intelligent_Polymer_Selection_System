@@ -28,6 +28,22 @@ const api = axios.create({
   withCredentials: true,
 });
 
+const HISTORY_TIME_ZONE = "Asia/Kolkata";
+
+const parseApiDate = (value) => {
+  if (!value) return null;
+
+  if (typeof value === "string") {
+    const trimmedValue = value.trim();
+    const hasTimeZone =
+      /(?:Z|[+-]\d{2}:?\d{2})$/i.test(trimmedValue);
+
+    return new Date(hasTimeZone ? trimmedValue : `${trimmedValue}Z`);
+  }
+
+  return new Date(value);
+};
+
 
 // ============================================================
 // FRONTEND DATA CACHE
@@ -3364,7 +3380,9 @@ const exportHistoryReport = (record, polymers) => {
             <span class="label">Generated</span>
             <span class="value">${escapeHtml(
               record.created_at
-                ? new Date(record.created_at).toLocaleString("en-IN")
+                ? parseApiDate(record.created_at).toLocaleString("en-IN", {
+                    timeZone: HISTORY_TIME_ZONE,
+                  })
                 : "—"
             )}</span>
           </div>
@@ -3578,9 +3596,9 @@ function HistoryPage() {
   const formatDate = (value) => {
     if (!value) return "Date unavailable";
 
-    const date = new Date(value);
+    const date = parseApiDate(value);
 
-    if (Number.isNaN(date.getTime())) {
+    if (!date || Number.isNaN(date.getTime())) {
       return "Date unavailable";
     }
 
@@ -3590,6 +3608,7 @@ function HistoryPage() {
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
+      timeZone: HISTORY_TIME_ZONE,
     });
   };
 

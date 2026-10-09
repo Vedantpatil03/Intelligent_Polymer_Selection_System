@@ -11,7 +11,11 @@ def get_cors_origins():
     origins = []
 
     if configured:
-        origins = [origin.strip() for origin in configured.split(",") if origin.strip()]
+        origins = [
+            origin.strip().rstrip("/")
+            for origin in configured.split(",")
+            if origin.strip()
+        ]
     else:
         origins = [
             "http://localhost:5173",
@@ -21,7 +25,7 @@ def get_cors_origins():
 
     frontend_url = os.getenv("FRONTEND_URL")
     if frontend_url:
-        frontend_url = frontend_url.strip()
+        frontend_url = frontend_url.strip().rstrip("/")
         if frontend_url and frontend_url not in origins:
             origins.append(frontend_url)
 
